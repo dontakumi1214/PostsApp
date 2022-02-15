@@ -12,30 +12,12 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('posts')->insert([
-            'user_id' => '1',
-            'title' => 'aiu',
-            'body' => 'aaa',
-        ]);
-        DB::table('posts')->insert([
-            'user_id' => '2',
-            'title' => 'bbb',
-            'body' => 'bbb',
-        ]);
-        DB::table('posts')->insert([
-            'user_id' => '3',
-            'title' => 'ccc',
-            'body' => 'ccc',
-        ]);
-        DB::table('posts')->insert([
-            'user_id' => '4',
-            'title' => 'ddd',
-            'body' => 'ddd',
-        ]);
-        DB::table('posts')->insert([
-            'user_id' => '5',
-            'title' => 'eee',
-            'body' => 'eee',
-        ]);
+        for($i=1; $i<10; $i++){
+            DB::table('posts')->insert([
+                'user_id' => rand(1,5),
+                'title' => 'aaa',
+                'body' => 'aaa',
+            ]);
+        };
     }
 }
