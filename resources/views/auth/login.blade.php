@@ -22,7 +22,7 @@
             {{ Form::close() }}
             <br>
                 <p class="devise-link text-center">
-                アカウントを既にお持ちの場合⇨
+                アカウントをお持ちでない方へ⇨
                     <a href="/signup">
                     新規登録する
                     </a>
