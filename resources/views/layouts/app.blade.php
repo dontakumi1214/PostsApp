@@ -19,7 +19,16 @@
                     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         </head>
         <body>
+            @include('commons.header')
             @yield('content')
+            <div class="center jumbotron">
+                <h1 class="display-4 text-center">
+                    Laravel Post
+                    <i class="fas fa-mail-bulk">
+                    </i>
+                </h1>
+            </div>
+            @include('commons.footer')
             <!-- JQuery -->
             <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
             <!-- Bootstrap tooltips -->
