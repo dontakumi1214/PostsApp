@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('app');
 });
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
