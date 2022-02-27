@@ -6,12 +6,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-md-auto align-items-center">
             <li>
-                <a class="btn btn-info" href=#><i class="fas fa-pencil-alt"></i>
+                <a class="btn btn-info" href="#"><i class="fas fa-pencil-alt"></i>
                 投稿する
                 </a>
             </li>
             <li>
-                <a class="nav-link far fa-user fa-lg" href=#>
+                <a class="nav-link far fa-user fa-lg" href="#">
                 </a>
             </li>
         </ul>
