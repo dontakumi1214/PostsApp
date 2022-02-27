@@ -19,7 +19,9 @@
                     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         </head>
         <body>
+            @include('commons.header')
             @yield('content')
+            @include('commons.footer')
             <!-- JQuery -->
             <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
             <!-- Bootstrap tooltips -->
