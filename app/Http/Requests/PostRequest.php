@@ -13,12 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() === 'posts')
-        {
-            return true;
-        }  else  {
-            return false;
-        }  
+        return true;
     }
 
     /**
@@ -31,6 +26,16 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required|max:20',
             'body' => 'required|max:255',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'タイトルを入力してください',
+            'title.max' => 'タイトルは20文字以下で入力してください',
+            'body.required' => '本文を入力してください',
+            'body.max' => '本文は255文字以下で入力してください'
         ];
     }
 }
