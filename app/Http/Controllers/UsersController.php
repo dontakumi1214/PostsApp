@@ -9,9 +9,9 @@ class UsersController extends Controller
 {
     public function show($id)
     {
-        $users = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.show', [
-            'users' => $users,
+            'user' => $user,
         ]);
     }
 }

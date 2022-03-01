@@ -6,17 +6,17 @@
             <div class="text-center">
                 <i class="fas fa-user-circle fa-3x"></i>
                 <h3>
-                　{{ ($users->name) }}
+                　{{ $user->name }}
 　　　　         </h3>
                 <div class="col-12">
                     <p>
-                      {{ ($users->email) }}
+                      {{ $user->email }}
                     </p>
                 </div>
                 <div class="col-12 mt-3">
-                    <a class="btn btn-outline-dark common-btn btn-sm edit-profile-btn" href="/users/edit"><i class="fas fa-user-edit"></i>プロフィール編集
+                    <a class="btn btn-outline-dark common-btn btn-sm edit-profile-btn" href="#"><i class="fas fa-user-edit"></i>プロフィール編集
                     </a>
-                    <a class="btn btn-outline-dark common-btn btn-sm edit-profile-btn" rel="nofollow" data-method="POST" href=""><i class="fas fa-cog"></i>ログアウト
+                    <a class="btn btn-outline-dark common-btn btn-sm edit-profile-btn" rel="nofollow" data-method="POST" href="{{route('logout')}}"><i class="fas fa-cog"></i>ログアウト
                     </a>
                     <form id="logout-form" action="" method="POST" style="display: none;">{{ csrf_field() }}
                     </form>
