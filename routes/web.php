@@ -22,3 +22,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('posts/create', 'PostsController@create')->name('posts.create');
 Route::post('posts', 'PostsController@store')->name('posts.store');
+Route::get('posts/edit/{id}', 'PostsController@edit')->name('posts.edit');
+Route::post('posts/{id}', 'PostsController@update')->name('posts.update');

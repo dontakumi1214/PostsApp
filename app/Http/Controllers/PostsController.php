@@ -32,4 +32,24 @@ class PostsController extends Controller
         
         return redirect('/');
     }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update(PostRequest $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = \Auth::id();
+        $post->save();
+
+        return redirect('/');
+    }
 }
