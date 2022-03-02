@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-md-auto align-items-center">
             <li>
-                <a class="btn btn-info" href="#"><i class="fas fa-pencil-alt"></i>
-                投稿する
+                <a class="btn btn-info" href="{{route('posts.create')}}"><i class="fas fa-pencil-alt"></i>
+                    投稿する
                 </a>
             </li>
             <li>
@@ -19,4 +19,3 @@
 </nav>
 
 @endauth
-
