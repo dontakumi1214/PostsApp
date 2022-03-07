@@ -12,10 +12,10 @@
           <form class="upload" id="new_post" enctype="multipart/form-data" action="{{route('posts.update' , $post->id)}}" accept-charset="UTF-8" method="POST">
             {{csrf_field()}}
             <div class="md-form">
-              <input class="form-control" type="text" name="title" placeholder="{{$post->title}}" />
+              <input class="form-control" type="text" name="title" value="{{ old('title', $post->title) }}" />
             </div>
-            <div class="form-group">
-              <textarea name="body" class="form-control" rows="10" placeholder="{{$post->body}}"></textarea>
+            <div class=" form-group">
+              <textarea name="body" class="form-control" rows="10" placeholder="{{ old('body', $post->body) }}"></textarea>
             </div>
             <div class="text-center">
               <input type="submit" name="commit" value="更新する" class="btn btn-primary w-25" data-disable-with="更新する" />

@@ -35,9 +35,13 @@ class PostsController extends Controller
 
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        return view('posts.edit', [
+        if (\Auth::id() !== $post->user_id) {
+            return redirect('/');
+        }
+        
+            return view('posts.edit', [
             'post' => $post
         ]);
     }
@@ -45,11 +49,15 @@ class PostsController extends Controller
     public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
+
+        if (\Auth::id() !== $post->user_id) {
+            return redirect(route('posts.edit', ['id' => \Auth::id]));
+        }
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->user_id = \Auth::id();
         $post->save();
-
         return redirect('/');
     }
 }
