@@ -29,7 +29,7 @@
                 </div>
                 <section>
                     <div class="m-4">
-                        <form class="w-100" action="" method="post">
+                        <form class="w-100" action="/" method="post">
                             {{ csrf_field() }}
                             <input name="utf8" type="hidden" value="" />
                             <input value="" type="hidden" name="user_id" />

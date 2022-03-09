@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\User;
 
 class UsersController extends Controller
@@ -18,12 +19,19 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', [
+        if(\Auth::id() == $user->id)
+        {
+            return view('users.edit', [
             'user' => $user,
         ]);
+        }else{
+            return view('users.show', [
+            'user' => $user,
+            ]);
+        }
     }
 
-    public function update(Request $request,$id)
+    public function update(UserRequest $request,$id)
     {
         $param = User::findOrFail($id);
         $param->name = $request->name;

@@ -3,20 +3,19 @@
 <div class="col-md-offset-2 mb-1 edit-profile-wrapper">
     <div class="row">
         <div class="col-md-8 mx-auto">
-           エラー表示部分
+           @include('commons.error_messages')
             <div class="profile-form-wrap">
                 <form class="edit_user" enctype="multipart/form-data" action="{{route('users.update', ['id' => Auth::id()])}}" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="&#x2713;" />
-                    <input type="hidden" name="id" value="" />
                     {{csrf_field()}}
                         <div class="form-group">
                             <label for="name">ユーザー名</label>
-                                <input autofocus="autofocus" class="form-control" value="<?php echo $user->name ?>" name="name" />
+                                <input autofocus="autofocus" class="form-control" value="{{ old('name', $user->name) }}" name="name" />
                         </div>
 
                         <div class="form-group">
                             <label for="email">メールアドレス</label>
-                                <input autofocus="autofocus" class="form-control" value="<?php echo $user->email ?>" name="email" />
+                                <input autofocus="autofocus" class="form-control" value="{{ old('email', $user->email) }}" name="email" />
                         </div>
 
                         <div class="form-group">
