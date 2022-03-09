@@ -60,4 +60,13 @@ class PostsController extends Controller
         $post->save();
         return redirect('/');
     }
+
+    public function destroy($id){
+        $post = Post::findOrFail($id);
+        if (\Auth::id() !== $post->user_id){
+            return redirect('/');
+        }
+        $post->delete();
+        return redirect('/');
+    }
 }
