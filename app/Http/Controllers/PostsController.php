@@ -32,4 +32,32 @@ class PostsController extends Controller
         
         return redirect('/');
     }
+
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+
+        if (\Auth::id() !== $post->user_id) {
+            return redirect('/');
+        }
+        
+            return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update(PostRequest $request, $id)
+    {
+        $post = Post::findOrFail($id);
+
+        if (\Auth::id() !== $post->user_id) {
+            return redirect(route('posts.edit', ['id' => \Auth::id]));
+        }
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = \Auth::id();
+        $post->save();
+        return redirect('/');
+    }
 }

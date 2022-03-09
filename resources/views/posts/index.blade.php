@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
                 <div class="post_edit text-right">
-                    <a class="btn btn-primary btn-sm" href=""><i class="far fa-edit"></i>編集
+                    <a class="btn btn-primary btn-sm" href="{{route('posts.edit', ['id' => $post->id])}}"><i class="far fa-edit"></i>編集
                     </a>
                     <a class="btn btn-danger btn-sm" rel="nofollow" href=""><i class="far fa-trash-alt"></i>削除
                     </a>
