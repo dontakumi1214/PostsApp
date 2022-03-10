@@ -28,4 +28,4 @@ Route::get('posts/create', 'PostsController@create')->name('posts.create');
 Route::post('posts', 'PostsController@store')->name('posts.store');
 Route::get('posts/edit/{id}', 'PostsController@edit')->name('posts.edit');
 Route::post('posts/{id}', 'PostsController@update')->name('posts.update');
-Route::get('posts/destroy/{id}', 'PostsController@destroy')->name('posts.destroy');
+Route::delete('posts/destroy/{id}', 'PostsController@destroy')->name('posts.destroy');
