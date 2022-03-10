@@ -33,10 +33,19 @@ class UsersController extends Controller
 
     public function update(UserRequest $request,$id)
     {
-        $param = User::findOrFail($id);
-        $param->name = $request->name;
-        $param->email = $request->email;
-        $param->save();
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+
+        if(\Auth::id() == $user->id)
+        {
         return redirect(route('users.show', ['id' => \Auth::id()]));
+        }else{
+            return view('users.show', [
+            'user' => $user,
+            ]);
+        }
     }
 }

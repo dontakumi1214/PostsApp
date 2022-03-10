@@ -36,6 +36,7 @@ class UserRequest extends FormRequest
                 'required',
                 'min:8', 
                 'max:16', 
+                'confirmed',
             ],
         ];
     }
