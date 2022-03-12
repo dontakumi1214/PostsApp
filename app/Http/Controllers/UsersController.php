@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
 use App\User;
 
@@ -34,14 +35,13 @@ class UsersController extends Controller
     public function update(UserRequest $request,$id)
     {
         $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-
         if(\Auth::id() == $user->id)
         {
-        return redirect(route('users.show', ['id' => \Auth::id()]));
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request['password']);
+            $user->save();
+            return redirect(route('users.show', ['id' => \Auth::id()]));
         }else{
             return view('users.show', [
             'user' => $user,
