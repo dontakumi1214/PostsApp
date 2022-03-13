@@ -25,19 +25,14 @@
                 <div class="mb-5">
                     {{$post->body}}
                 </div>
-                <div class="container">
-                    <div class="post_edit text-right">
-                        <form action="{{route('posts.edit', ['id' => $post->id])}}" method="post">
-                            @method('GET')
-                            @csrf
-                            <button type='submit' class="btn btn-primary btn-sm"><i class="far fa-edit"></i>編集</button>
-                        </form>
-                        <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button type='submit' class="btn btn-danger btn-sm"><i class="far fa-edit"></i>削除</button>
-                        </form>
-                    </div>
+                <div class="post_edit text-right">
+                    <a class="btn btn-primary btn-sm" href="{{route('posts.edit', ['id' => $post->id])}}"><i class="far fa-edit"></i>編集
+                    </a>
+                    <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type='submit' class="btn btn-danger btn-sm"><i class="far fa-edit"></i>削除</button>
+                    </form>
                 </div>
                 <section>
                     <div class="m-4">
@@ -61,3 +56,4 @@
 </div>
 @endforeach
 @endsection
+

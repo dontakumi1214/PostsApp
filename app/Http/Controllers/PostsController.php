@@ -70,3 +70,4 @@ class PostsController extends Controller
         return redirect('/')->with('success','削除に成功しました。');
     }
 }
+
