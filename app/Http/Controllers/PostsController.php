@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\User;
 use App\Post;
+use App\Comment;
 
 class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id','desc')->get();
+        $posts = Post::orderBy('id','desc')->with('comments')->get();
+        $post = Post::find(3)->comments;
+        dd($post);
         return view('posts.index',[
             'posts' => $posts,
+            
         ]);
     }
 
