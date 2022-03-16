@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('commons.session_messages')
-
+@include('commons.error_messages')
 @foreach($posts as $post)
 <div class="col-md-8 col-md-2 mx-auto">
     <div class="card-wrap">
