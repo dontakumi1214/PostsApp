@@ -13,8 +13,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->with('comments')->get();
-        $post = Post::find(3)->comments;
-        dd($post);
         return view('posts.index',[
             'posts' => $posts,
             
