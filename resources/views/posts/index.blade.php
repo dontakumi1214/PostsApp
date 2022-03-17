@@ -36,7 +36,22 @@
                 </div>
                 <section>
                     <div class="m-4">
+<<<<<<< HEAD
                         <form class="w-100" action="{{route('comments.store')}}" method="post">
+=======
+                            @foreach($post->comments as $comment)
+                                <div class="border-top p-1">
+                                    <div>
+                                        <a class="no-text-decoration text-dark" href="{{route('users.show', ['id' => $comment->user_id])}}">{{$comment->user->name}}</a>
+                                    </div>
+                                    <div>
+                                        <span>{{$comment->comment}}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <form class="w-100" action="/" method="post">
+>>>>>>> develop_10th
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value={{Auth::id()}} />
                             <input type="hidden" name="post_id" value={{$post->id}} />
