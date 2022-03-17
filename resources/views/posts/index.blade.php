@@ -36,6 +36,17 @@
                 </div>
                 <section>
                     <div class="m-4">
+                            @foreach($post->comments as $comment)
+                                <div class="border-top p-1">
+                                    <div>
+                                        <a class="no-text-decoration text-dark" href="{{route('users.show', ['id' => $comment->user_id])}}">{{$comment->user->name}}</a>
+                                    </div>
+                                    <div>
+                                        <span>{{$comment->comment}}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                         <form class="w-100" action="/" method="post">
                             {{ csrf_field() }}
                             <input name="utf8" type="hidden" value="" />
