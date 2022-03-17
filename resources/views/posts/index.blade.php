@@ -36,9 +36,6 @@
                 </div>
                 <section>
                     <div class="m-4">
-<<<<<<< HEAD
-                        <form class="w-100" action="{{route('comments.store')}}" method="post">
-=======
                             @foreach($post->comments as $comment)
                                 <div class="border-top p-1">
                                     <div>
@@ -50,16 +47,15 @@
                                 </div>
                             @endforeach
                         </div>
-                        <form class="w-100" action="/" method="post">
->>>>>>> develop_10th
+                        <form class="w-100" action="{{route('comments.store')}}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value={{Auth::id()}} />
                             <input type="hidden" name="post_id" value={{$post->id}} />
                             <input name="comment" class="form-control comment-input border border-light mx-auto" placeholder="コメントを入力する">
                             </input>
                             <div class="text-right">
-                                <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm">
-                                </input>
+                            <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm">
+                            </input>
                             </div>
                         </form>
                     </div>

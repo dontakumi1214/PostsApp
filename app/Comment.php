@@ -20,8 +20,4 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> develop_10th
 }
