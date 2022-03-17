@@ -15,9 +15,5 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> develop_10th
 }
 
