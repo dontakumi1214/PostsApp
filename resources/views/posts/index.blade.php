@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('commons.session_messages')
-
+@include('commons.error_messages')
 @foreach($posts as $post)
 <div class="col-md-8 col-md-2 mx-auto">
     <div class="card-wrap">
@@ -36,35 +36,33 @@
                 </div>
                 <section>
                     <div class="m-4">
-                            @foreach($post->comments as $comment)
-                                <div class="border-top p-1">
-                                    <div>
-                                        <a class="no-text-decoration text-dark" href="{{route('users.show', ['id' => $comment->user_id])}}">{{$comment->user->name}}</a>
-                                    </div>
-                                    <div>
-                                        <span>{{$comment->comment}}</span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <form class="w-100" action="/" method="post">
-                            {{ csrf_field() }}
-                            <input name="utf8" type="hidden" value="" />
-                            <input value="" type="hidden" name="user_id" />
-                            <input value="" type="hidden" name="post_id" />
-                            <input name="" value="" class="form-control comment-input border border-light mx-auto" placeholder="コメントを入力する">
-                            </input>
-                            <div class="text-right">
-                                <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm">
-                                </input>
+                        @foreach($post->comments as $comment)
+                        <div class="border-top p-1">
+                            <div>
+                                <a class="no-text-decoration text-dark" href="{{route('users.show', ['id' => $comment->user_id])}}">{{$comment->user->name}}</a>
                             </div>
-                        </form>
+                            <div>
+                                <span>{{$comment->comment}}</span>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                </section>
+                    <form class="w-100" action="{{route('comments.store')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="user_id" value={{Auth::id()}} />
+                        <input type="hidden" name="post_id" value={{$post->id}} />
+                        <input name="comment[{{$post->id}}]" class="form-control comment-input border border-light mx-auto">
+                        </input>
+                        <div class="text-right">
+                            <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm " value="{{old('comment.'.$post->id)}}">
+                            </input>
+                        </div>
+                    </form>
             </div>
+            </section>
         </div>
     </div>
 </div>
+</div>
 @endforeach
 @endsection
-
