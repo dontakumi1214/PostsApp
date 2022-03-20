@@ -54,7 +54,7 @@
                         <input name="comment[{{$post->id}}]" class="form-control comment-input border border-light mx-auto">
                         </input>
                         <div class="text-right">
-                            <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm " value="{{old('comment')}}">
+                            <input type="submit" value="&#xf075;コメント送信" class="far fa-comment btn btn-default btn-sm " value="{{old('comment.'.$post->id)}}">
                             </input>
                         </div>
                     </form>
