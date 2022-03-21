@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
-
+use App\Http\Requests\CommentUpdateRequest;
+use App\User;
+use App\Post;
 use App\Comment;
 
 class CommentsController extends Controller
@@ -21,5 +23,29 @@ class CommentsController extends Controller
         $comment->user_id = $user_id;
         $comment->save();
         return redirect('/')->with('success', 'コメントの投稿に成功しました。');
+    }
+
+    public function edit($id){
+        $comment = Comment::findOrFail($id);
+        if(\Auth::id() !== $comment->user_id){
+            return redirect('/');
+        }
+        return view('comments.edit', [
+            'comment' => $comment
+        ]);
+    }
+    
+    public function update(CommentRequest $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        if (\Auth::id() !== $comment->user_id) {
+            return redirect(route('comments.edit', ['id' => \Auth::id]));
+        }
+
+        $comment->comment = $request->comment;
+        $comment->user_id = \Auth::id();
+        $comment->save();
+        return redirect('/');
     }
 }
