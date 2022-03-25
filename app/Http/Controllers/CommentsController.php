@@ -28,7 +28,7 @@ class CommentsController extends Controller
     public function edit($id){
         $comment = Comment::findOrFail($id);
         if(\Auth::id() !== $comment->user_id){
-            return redirect('/');
+            return back('/');
         }
         return view('comments.edit', [
             'comment' => $comment
@@ -40,12 +40,12 @@ class CommentsController extends Controller
         $comment = Comment::findOrFail($id);
 
         if (\Auth::id() !== $comment->user_id) {
-            return redirect(route('comments.edit', ['id' => \Auth::id]));
+            return redirect(route('comments.edit', ['id' => \Auth::id()]))->with('error','許可されていない操作です。');
         }
 
         $comment->comment = $request->comment;
         $comment->user_id = \Auth::id();
         $comment->save();
-        return redirect('/');
+        return redirect('/')->with('success', 'コメントの投稿に成功しました。');
     }
 }

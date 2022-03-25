@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <form class="upload" id="new_post" enctype="multipart/form-data" action="{{route('comments.update' , $comment->id)}}" accept-charset="UTF-8" method="POST">
-            {{csrf_field()}}
+            @csrf
             <div class="md-form">
             <input type="hidden" name="post_id" value={{$comment->id}} />
               <input class="form-control" type="text" name="comment" value="{{old('comment', $comment->comment)}}"/>
