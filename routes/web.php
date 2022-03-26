@@ -35,3 +35,4 @@ Route::delete('posts/destroy/{id}', 'PostsController@destroy')->name('posts.dest
 Route::post('comments', 'CommentsController@store')->name('comments.store');
 Route::get('comments/edit/{id}', 'CommentsController@edit')->name('comments.edit');
 Route::post('comments/{id}', 'CommentsController@update')->name('comments.update');
+Route::delete('comments/destroy/{id}', 'CommentsController@destroy')->name('comments.destroy');
