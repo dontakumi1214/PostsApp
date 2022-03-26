@@ -41,6 +41,17 @@
                             <div>
                                 <a class="no-text-decoration text-dark" href="{{route('users.show', ['id' => $comment->user_id])}}">{{$comment->user->name}}</a>
                             </div>
+                            @if(Auth::id() === $comment->user_id)
+                            <div class="post_edit text-right">
+                                <a class="btn btn-primary btn-sm" href="{{route('comments.edit', ['id' => $comment->id])}}"><i class="far fa-edit"></i>編集
+                                </a>
+                                <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type='submit' class="btn btn-danger btn-sm"><i class="far fa-edit"></i>削除</button>
+                                </form>
+                            </div>
+                            @endif
                             <div>
                                 <span>{{$comment->comment}}</span>
                             </div>
@@ -48,7 +59,7 @@
                         @endforeach
                     </div>
                     <form class="w-100" action="{{route('comments.store')}}" method="post">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="user_id" value={{Auth::id()}} />
                         <input type="hidden" name="post_id" value={{$post->id}} />
                         <input name="comment[{{$post->id}}]" class="form-control comment-input border border-light mx-auto">

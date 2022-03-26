@@ -27,6 +27,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'comment.*' => 'required|max:255',
+            'comment' => 'required|max:255',
             'post_id' => 'required',
         ];
     }
@@ -36,6 +37,8 @@ class CommentRequest extends FormRequest
         return [
             'comment.*.required' => 'コメントを入力してください。',
             'comment.*.max' => 'コメントは255字以内で入力してください。',
+            'comment.required' => 'コメントを入力してください。',
+            'comment.max' => 'コメントは255字以内で入力してください。',
             'post_id.required' => 'ユニークな投稿idが指定されていません。',
         ];
     }
