@@ -48,4 +48,15 @@ class CommentsController extends Controller
         $comment->save();
         return redirect('/')->with('success', 'コメントの投稿に成功しました。');
     }
+
+    public function destroy($id){
+
+        $comment = Comment::findOrFail($id);
+        if(\Auth::id() !== $comment->user_id){
+            return redirect('/')->with('error','許可されていない操作です。');
+        }
+
+        $comment->delete();
+        return redirect('/')->with('success','コメントの削除に成功しました。');
+    }
 }

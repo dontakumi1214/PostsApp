@@ -45,7 +45,7 @@
                             <div class="post_edit text-right">
                                 <a class="btn btn-primary btn-sm" href="{{route('comments.edit', ['id' => $comment->id])}}"><i class="far fa-edit"></i>編集
                                 </a>
-                                <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="post">
+                                <form action="{{route('comments.destroy', ['id' => $comment->id])}}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button type='submit' class="btn btn-danger btn-sm"><i class="far fa-edit"></i>削除</button>
