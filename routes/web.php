@@ -22,17 +22,17 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('users/{id}', 'UsersController@show')->name('users.show');
-    Route::get('edit/{id}', 'UsersController@edit')->name('users.edit');
+    Route::get('users/{id}/edit', 'UsersController@edit')->name('users.edit');
     Route::post('users/{id}', 'UsersController@update')->name('users.update');
 });
 
 Route::get('posts/create', 'PostsController@create')->name('posts.create');
 Route::post('posts', 'PostsController@store')->name('posts.store');
-Route::get('posts/edit/{id}', 'PostsController@edit')->name('posts.edit');
+Route::get('posts/{id}/edit', 'PostsController@edit')->name('posts.edit');
 Route::post('posts/{id}', 'PostsController@update')->name('posts.update');
-Route::delete('posts/destroy/{id}', 'PostsController@destroy')->name('posts.destroy');
+Route::delete('posts/{id}', 'PostsController@destroy')->name('posts.destroy');
 
 Route::post('comments', 'CommentsController@store')->name('comments.store');
-Route::get('comments/edit/{id}', 'CommentsController@edit')->name('comments.edit');
+Route::get('comments/{id}/edit', 'CommentsController@edit')->name('comments.edit');
 Route::post('comments/{id}', 'CommentsController@update')->name('comments.update');
-Route::delete('comments/destroy/{id}', 'CommentsController@destroy')->name('comments.destroy');
+Route::delete('comments/{id}', 'CommentsController@destroy')->name('comments.destroy');
